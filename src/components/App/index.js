@@ -10,10 +10,12 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
-import * as ROUTES from '../constants/routes';
+import * as ROUTES from '../../constants/routes';
 
 const App = () => (
+ // https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/#react-firebase-sign-in
   <Router>
+    
     <div>
       <Navigation />
 
