@@ -1,4 +1,5 @@
-import App, { app } from 'firebase/app';
+import app from 'firebase/app';
+import 'firebase/auth';
 
 var config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +16,7 @@ class Firebase {
 
     this.auth = app.auth();
   }
+
 
   // AUTH API //
 
@@ -35,4 +37,5 @@ class Firebase {
   }
 }
 
-export default Firebase
+export default Firebase;
+
