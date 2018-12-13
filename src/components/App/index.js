@@ -11,6 +11,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
+import { withFirebase } from '../Firebase';
 
 class App extends Component {
    // https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/#react-firebase-session-handling
@@ -18,9 +19,20 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state({
+    this.state = {
       authUser: null
-    })
+    }
+  }
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(
+      authUser => {
+      authUser ? this.setState({ authUser }) : this.setState({ authUser: null})
+    });  
+  }
+
+  componentWillUnmount() {
+    this.listener();
   }
 
   render() {
@@ -46,4 +58,4 @@ class App extends Component {
   }
 };
 
-export default App;
+export default withFirebase(App);
